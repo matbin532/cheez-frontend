@@ -1,20 +1,22 @@
 <script setup>
-import { RouterLink, RouterView, useRouter } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import { useAuthStore } from '@/stores/auth'
+import { /* RouterLink,  */ RouterView /* useRouter */ } from 'vue-router'
+/* import HelloWorld from './components/HelloWorld.vue' */
+/* import { useAuthStore } from '@/stores/auth' */
+import TheNavbar from './components/TheNavbar.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
-const authStore = useAuthStore()
+/* const authStore = useAuthStore()
 const router = useRouter()
-
-const logout = () => {
+ */
+/* const logout = () => {
   authStore.clearAuth()
   router.push('/login')
-}
+} */
 </script>
 
 <template>
-  <header>
+  <!--  <header>
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
@@ -33,7 +35,13 @@ const logout = () => {
     </div>
   </header>
 
-  <RouterView />
+  <RouterView /> -->
+  <header>
+    <TheNavbar />
+  </header>
+  <main class="container py-4">
+    <RouterView />
+  </main>
 </template>
 
 <style scoped>
