@@ -28,13 +28,13 @@ const logout = () => {
               data-bs-toggle="dropdown"
             >
               <img
-                src="https://via.placeholder.com/32"
-                class="rounded-circle me-2"
-                width="32"
-                height="32"
+                :src="authStore.user?.pfP_URL || 'https://via.placeholder.com/48'"
+                class="img-thumbnail me-2"
+                width="48"
+                height="48"
                 alt="Profile"
               />
-              <span>Username</span>
+              <span>{{ authStore.user?.username }}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
               <li><RouterLink class="dropdown-item" to="/profile">Profile</RouterLink></li>

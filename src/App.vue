@@ -2,10 +2,17 @@
 import { /* RouterLink,  */ RouterView /* useRouter */ } from 'vue-router'
 /* import HelloWorld from './components/HelloWorld.vue' */
 /* import { useAuthStore } from '@/stores/auth' */
+import { useAuthStore } from '@/stores/auth'
 import TheNavbar from './components/TheNavbar.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { onMounted } from 'vue'
 
+const authStore = useAuthStore()
+
+onMounted(async () => {
+  await authStore.initializeAuth()
+})
 /* const authStore = useAuthStore()
 const router = useRouter()
  */
@@ -38,10 +45,9 @@ const router = useRouter()
   <RouterView /> -->
   <header>
     <TheNavbar />
-  </header>
-  <main class="container py-4">
+
     <RouterView />
-  </main>
+  </header>
 </template>
 
 <style scoped>

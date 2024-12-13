@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useAuthStore } from '@/stores/auth'
+import { useCookies } from 'vue3-cookies'
 import router from '@/router'
 
 const api = axios.create({
@@ -42,9 +43,11 @@ export const forumService = {
 }
 
 api.interceptors.request.use((config) => {
-  const authStore = useAuthStore()
-  if (authStore.token) {
-    config.headers.Authorization = `Bearer ${authStore.token}`
+  const { cookies } = useCookies()
+  const refreshToken = cookies.get('refresh_token')
+
+  if (refreshToken) {
+    config.headers.Authorization = `Bearer ${refreshToken}`
   }
   return config
 })

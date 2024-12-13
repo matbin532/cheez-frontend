@@ -71,9 +71,6 @@ body {
   align-items: center;
   -webkit-box-pack: center;
   justify-content: center;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  background-color: #f5f5f5;
 }
 
 .form-signin {
@@ -95,7 +92,7 @@ body {
 .form-signin .form-control:focus {
   z-index: 2;
 }
-.form-signin input[type='email'] {
+.form-signin input[type='text'] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
