@@ -45,8 +45,9 @@ const router = useRouter()
   <RouterView /> -->
   <header>
     <TheNavbar />
-
-    <RouterView />
+    <main class="container mt-5 pt-5">
+      <RouterView />
+    </main>
   </header>
 </template>
 

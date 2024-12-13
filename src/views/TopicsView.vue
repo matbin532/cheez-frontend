@@ -70,15 +70,15 @@ onMounted(() => {
         <span class="visually-hidden">Loading...</span>
       </div>
     </div>
-
-    <div class="row g-4">
+    <div class="row g-4 text-start">
       <div v-for="(topic, index) in topics" :key="topic.topicID" class="col-md-6 col-lg-4">
         <div class="card h-100 topic-card" :style="{ animationDelay: `${index * 0.1}s` }">
           <div class="card-body">
             <small class="text-muted"
               >Created by: {{ creatorNames[topic.topicID] || 'Loading...' }}</small
             >
-            <p class="card-text">{{ topic.description }}</p>
+            <p class="card-text">{{ topic.title }}</p>
+            <p class="card-text small">{{ topic.description }}</p>
             <div class="d-flex justify-content-between align-items-center">
               <!--               <small class="text-muted">Last active: {{ topic.createdAt }}</small> -->
               <div class="btn-group">
@@ -94,7 +94,6 @@ onMounted(() => {
                   </button>
                 </template>
                 <button
-                  v-else
                   @click="router.push(`/topics/${topic.topicID}`)"
                   class="btn btn-sm btn-outline-primary"
                 >
