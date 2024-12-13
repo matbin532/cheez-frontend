@@ -28,12 +28,6 @@ const router = createRouter({
       name: 'login',
       component: () => import('../views/LoginView.vue'),
     },
-    /*     {
-      path: '/forum',
-      name: 'forum',
-      component: () => import('../components/forum/PostList.vue'),
-      meta: { requiresAuth: true }
-    } */
   ],
 })
 
