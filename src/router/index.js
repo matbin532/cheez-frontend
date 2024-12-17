@@ -41,6 +41,11 @@ const router = createRouter({
       component: () => import('../views/EditThread.vue'),
     },
     {
+      path: '/topics/:topicId/threads/:threadId/posts',
+      name: 'posts',
+      component: () => import('../views/PostsView.vue'),
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue'),

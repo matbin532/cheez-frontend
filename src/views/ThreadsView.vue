@@ -93,7 +93,9 @@ onMounted(fetchThreads)
               <div class="btn-group">
                 <button
                   class="btn btn-sm btn-outline-primary"
-                  @click="router.push(`/topics/${route.params.topicId}/threads/${thread.threadID}`)"
+                  @click="
+                    router.push(`/topics/${route.params.topicId}/threads/${thread.threadID}/posts`)
+                  "
                 >
                   View Thread
                 </button>
