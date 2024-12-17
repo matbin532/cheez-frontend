@@ -37,7 +37,7 @@ const updateThread = async () => {
     await forumService.updateThread(route.params.topicId, route.params.threadId, {
       title: thread.value.title,
     })
-    router.push(`/topics/${route.params.topicId}`)
+    router.push(`/topics/${route.params.topicId}/threads`)
   } catch (err) {
     error.value = 'Failed to update thread'
     console.error(err)

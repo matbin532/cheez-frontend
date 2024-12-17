@@ -99,8 +99,7 @@ onMounted(fetchThreads)
                 </button>
                 <template
                   v-if="
-                    authStore.user?.userID === thread.creatorId ||
-                    authStore.user?.isAdmin === 'true'
+                    authStore.user?.userID === thread.creatorId || authStore.user?.isAdmin === true
                   "
                 >
                   <button
