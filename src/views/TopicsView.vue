@@ -53,7 +53,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container mt-5 pt-5">
+  <div class="container mt-4 pt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2>Latest Topics</h2>
       <button
@@ -128,5 +128,13 @@ onMounted(() => {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+:root {
+  --navbar-height: 56px;
+}
+
+.container {
+  min-height: calc(100vh - var(--navbar-height));
 }
 </style>

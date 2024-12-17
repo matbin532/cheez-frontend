@@ -51,3 +51,5 @@ const logout = () => {
     </div>
   </nav>
 </template>
+
+<style scoped></style>
