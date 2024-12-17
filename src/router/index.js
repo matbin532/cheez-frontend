@@ -21,9 +21,14 @@ const router = createRouter({
       component: () => import('../views/EditTopic.vue'),
     },
     {
-      path: '/topics/:topicId/',
+      path: '/topics/:topicId/threads',
       name: 'threads',
       component: () => import('../views/ThreadsView.vue'),
+    },
+    {
+      path: '/topics/:topicId/threads/:threadId/edit',
+      name: 'edit-thread',
+      component: () => import('../views/EditThread.vue'),
     },
     {
       path: '/login',

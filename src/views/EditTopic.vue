@@ -2,12 +2,18 @@
 import { ref, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { forumService } from '@/services/api'
+import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
 const route = useRoute()
 const loading = ref(true)
 const saving = ref(false)
 const error = ref(null)
+const store = useAuthStore()
+
+if (!store.isAuthenticated) {
+  router.push('/login')
+}
 
 const topic = ref({
   title: '',
@@ -70,7 +76,7 @@ onMounted(fetchTopic)
           required
           minlength="3"
         />
-        <div class="invalid-feedback">Title is required and must be at least 3 characters</div>
+        <div class="invalid-feedback">Title is required</div>
       </div>
 
       <div class="mb-3">
@@ -83,9 +89,7 @@ onMounted(fetchTopic)
           required
           minlength="10"
         ></textarea>
-        <div class="invalid-feedback">
-          Description is required and must be at least 10 characters
-        </div>
+        <div class="invalid-feedback">Description is required</div>
       </div>
 
       <div class="d-flex gap-2">

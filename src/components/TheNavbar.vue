@@ -14,10 +14,8 @@ const logout = () => {
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
-      <!-- Left side -->
       <RouterLink class="navbar-brand" to="/">Cheezburger</RouterLink>
 
-      <!-- Right side -->
       <div class="navbar-nav ms-auto">
         <template v-if="authStore.isAuthenticated">
           <div class="nav-item dropdown">

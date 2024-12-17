@@ -98,7 +98,10 @@ onMounted(fetchThreads)
                   View Thread
                 </button>
                 <template
-                  v-if="authStore.user?.id === thread.creatorID || authStore.user?.role === 'admin'"
+                  v-if="
+                    authStore.user?.userID === thread.creatorId ||
+                    authStore.user?.isAdmin === 'true'
+                  "
                 >
                   <button
                     class="btn btn-sm btn-outline-secondary"

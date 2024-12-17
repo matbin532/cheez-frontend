@@ -94,7 +94,7 @@ onMounted(() => {
                   </button>
                 </template>
                 <button
-                  @click="router.push(`/topics/${topic.topicID}`)"
+                  @click="router.push(`/topics/${topic.topicID}/threads`)"
                   class="btn btn-sm btn-outline-primary"
                 >
                   View Topic
