@@ -2,7 +2,7 @@
   <div class="not-found">
     <div class="not-found-container">
       <img
-        src="@/assets/4043.png"
+        src="@/assets/404.png"
         alt="404 Not Found"
         class="not-found-image"
       />
@@ -14,7 +14,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   name: 'NotFound'

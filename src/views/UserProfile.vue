@@ -17,6 +17,8 @@ const profile = ref({
   pfP_URL: '',
 })
 
+
+
 const newPassword = ref({
   current: '',
   new: '',
@@ -34,13 +36,19 @@ const fetchProfile = async () => {
   }
 }
 
+const editForm = ref({
+  username: profile.value.username,
+  email: profile.value.email,
+  pfP_URL: profile.value.pfP_URL,
+})
+
 const updateProfile = async () => {
   saving.value = true
   error.value = null
   success.value = null
 
   try {
-    await forumService.updateUser(authStore.user.userID, profile.value)
+    await forumService.updateUser(authStore.user.userID, editForm.value)
     success.value = 'Profile updated successfully'
     authStore.user = { ...authStore.user, ...profile.value }
   } catch (error) {
@@ -106,7 +114,7 @@ onMounted(fetchProfile)
             type="url"
             class="form-control"
             id="pfP_URL"
-            v-model="profile.pfP_URL"
+            v-model="editForm.pfP_URL"
             placeholder="Enter image URL"
           />
         </div>
@@ -120,14 +128,13 @@ onMounted(fetchProfile)
               type="text"
               class="form-control"
               id="username"
-              v-model="profile.username"
-              required
+              v-model="editForm.username"
             />
           </div>
 
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" v-model="profile.email" required />
+            <input type="email" class="form-control" id="email" v-model="editForm.email"  />
           </div>
 
           <button type="submit" class="btn btn-primary" :disabled="saving">
