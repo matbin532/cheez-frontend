@@ -116,7 +116,7 @@ onMounted(fetchUsers)
               <tr v-for="user in users" :key="user.userID">
                 <td>
                   <img
-                    :src="user.pfP_URL || 'https://via.placeholder.com/150'"
+                    :src="user.pfP_URL || 'https://placehold.co/150x150.png'"
                     class="img-thumbnail mb-3"
                     alt="Profile Picture"
                     style="width: 25px; height: 25px; object-fit: cover"

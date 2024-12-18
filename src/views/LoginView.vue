@@ -16,6 +16,8 @@ const credentials = ref({
   password: '',
 })
 
+const errorMessage = ref('')
+
 const login = async () => {
   try {
     const response = await authService.login(credentials.value)
@@ -24,7 +26,7 @@ const login = async () => {
     router.push('/')
   } catch (error) {
     error.value = 'Invalid credentials'
-    router.push('/error')
+    errorMessage.value = "Invalid username or password."
   }
 }
 </script>
@@ -56,6 +58,7 @@ const login = async () => {
         <label> <input type="checkbox" value="remember-me" /> Remember me </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      <div v-if="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
     </form>
   </body>
 </template>

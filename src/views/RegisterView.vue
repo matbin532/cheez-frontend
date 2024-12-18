@@ -17,13 +17,19 @@ const credentials = ref({
   password: '',
 })
 
+const errorMessage = ref('')
+
 const register = async () => {
   try {
     await authService.register(credentials.value)
     router.push('/login')
   } catch (error) {
     console.error(error)
-    router.push('/error')
+    if (error.response.status === 409) {
+      errorMessage.value = 'Username and/or email already exist.'
+      return
+    }
+    errorMessage.value = 'Failed to register'
   }
 }
 </script>
@@ -48,7 +54,7 @@ const register = async () => {
         type="email"
         id="inputEmail"
         class="form-control"
-        placeholder="Email address"
+        placeholder="Type in a fake email here"
         required=""
       />
       <label for="inputPassword" class="sr-only">Password</label>
@@ -57,10 +63,11 @@ const register = async () => {
         type="password"
         id="inputPassword"
         class="form-control"
-        placeholder="Password"
+        placeholder="At least 8 characters"
         required=""
       />
       <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+      <div v-if="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
     </form>
   </body>
 </template>

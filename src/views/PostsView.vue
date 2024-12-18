@@ -82,7 +82,7 @@ const getCreatorInfo = async (post) => {
     console.error('Error fetching creator info:', error)
     creatorInfo.value[post.creatorID] = {
       username: 'Unknown User',
-      pfP_URL: 'https://via.placeholder.com/48',
+      pfP_URL: 'https://placehold.co/48x48.png',
     }
   }
 }
@@ -152,7 +152,7 @@ onMounted(fetchPosts)
           <div class="d-flex">
             <div class="user-info text-center me-4" style="min-width: 120px">
               <img
-                :src="creatorInfo[post.creatorID]?.pfP_URL || 'https://via.placeholder.com/48'"
+                :src="creatorInfo[post.creatorID]?.pfP_URL || 'https://placehold.co/48x48.png'"
                 class="img-thumbnail mb-2"
                 width="48"
                 height="48"
@@ -170,7 +170,7 @@ onMounted(fetchPosts)
                 <div
                   class="btn-group"
                   v-if="
-                    authStore.user?.userID === post.creatorId || authStore.user?.isAdmin === true
+                    authStore.user?.userID === post.creatorID || authStore.user?.isAdmin === true
                   "
                 >
                   <button

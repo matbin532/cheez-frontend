@@ -133,7 +133,24 @@ onMounted(fetchThreads)
 .thread-card {
   animation: fadeInUp 0.5s ease forwards;
   opacity: 0;
+  width: 900px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
+
+@media (max-width: 900px) {
+  .thread-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .thread-card {
+    width: 100%;
+  }
+}
+
+
 
 @keyframes fadeInUp {
   from {

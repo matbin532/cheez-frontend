@@ -103,7 +103,7 @@ onMounted(fetchProfile)
     <div v-else class="row">
       <div class="col-md-4 text-center mb-4">
         <img
-          :src="profile.pfP_URL || 'https://via.placeholder.com/150'"
+          :src="profile.pfP_URL || 'https://placehold.co/150x150.png'"
           class="img-thumbnail mb-3"
           alt="Profile Picture"
           style="width: 150px; height: 150px; object-fit: cover"
