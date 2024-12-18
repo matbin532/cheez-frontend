@@ -111,17 +111,6 @@ onMounted(fetchPosts)
 
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h3>Posts</h3>
-      <button
-        v-if="authStore.isAuthenticated"
-        @click="
-          router.push(
-            `/topics/${route.params.topicId}/threads/${route.params.threadId}/posts/create`,
-          )
-        "
-        class="btn btn-primary"
-      >
-        Add Post
-      </button>
     </div>
 
     <nav v-if="totalPages > 1" class="my-4">

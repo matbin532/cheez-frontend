@@ -4,8 +4,11 @@ import { useAuthStore } from '@/stores/auth'
 import { authService } from '@/services/auth'
 import { useRouter } from 'vue-router'
 
-if (useAuthStore().isAuthenticated) {
-  useRouter().push('/')
+const router = useRouter()
+const store = useAuthStore()
+
+if (store.isAuthenticated) {
+  router.push('/')
 }
 
 const credentials = ref({
@@ -17,10 +20,10 @@ const credentials = ref({
 const register = async () => {
   try {
     await authService.register(credentials.value)
-    useRouter().push('/login')
+    router.push('/login')
   } catch (error) {
     console.error(error)
-    useRouter().push('/error')
+    router.push('/error')
   }
 }
 </script>
