@@ -2,12 +2,12 @@
   <div class="not-found">
     <div class="not-found-container">
       <img
-        src="https://files.catbox.moe/3dl1td.png"
+        src="https://files.catbox.moe/2y2a2g.jpg"
         alt="Error"
         class="not-found-image"
       />
       <h1>Error</h1>
-      <p>Oops! Looks like an error. Feel free to tell me what exactly led you here. Or don't. I'm not yer dad, sonny.</p>
+      <p>Oops! Looks like an error. Feel free to tell me what exactly led you here.</p>
       <router-link to="/" class="home-button">
         Return to Home
       </router-link>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'ConflictView'
+  name: 'ErrorView',
 }
 </script>
 
