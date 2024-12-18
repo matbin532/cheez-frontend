@@ -72,7 +72,7 @@ const router = createRouter({
     },
     {
       path: '/404',
-      name: '404',
+      name: 'NotFound',
       component: () => import('../views/NotFound.vue'),
     },
     {
@@ -93,7 +93,7 @@ router.beforeEach((to, from, next) => {
   }
 
   if (!to.matched.length) {
-    router.push({ name: '404' })
+    router.push({ name: 'NotFound' })
   } else {
     next()
   }
