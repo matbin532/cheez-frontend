@@ -11,6 +11,16 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/RegisterView.vue'),
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/UserProfile.vue'),
+    },
+    {
       path: '/topics',
       name: 'topics',
       component: () => import('../views/TopicsView.vue'),
@@ -46,10 +56,20 @@ const router = createRouter({
       component: () => import('../views/PostsView.vue'),
     },
     {
+      path: '/admin/users',
+      name: 'admin-users',
+      component: () => import('../views/AdminView.vue'),
+    },
+    {
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue'),
     },
+    {
+      path: '/404',
+      name: '404',
+      component: () => import('../views/NotFound.vue'),
+    }
   ],
 })
 
@@ -58,6 +78,12 @@ router.beforeEach((to, from, next) => {
 
   if (to.meta.requiresAuth && !authStore.isAuthenticated) {
     next('/login')
+  } else {
+    next()
+  }
+
+  if (!to.matched.length) {
+    router.push({ name: '404' })
   } else {
     next()
   }

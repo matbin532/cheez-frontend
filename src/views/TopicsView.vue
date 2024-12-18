@@ -55,7 +55,7 @@ onMounted(() => {
 <template>
   <div class="container mt-4 pt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2>Latest Topics</h2>
+      <h2>Topics</h2>
       <button
         v-if="authStore.isAuthenticated"
         @click="router.push('/topics/create')"
@@ -80,7 +80,6 @@ onMounted(() => {
             <p class="card-text">{{ topic.title }}</p>
             <p class="card-text small">{{ topic.description }}</p>
             <div class="d-flex justify-content-between align-items-center">
-              <!--               <small class="text-muted">Last active: {{ topic.createdAt }}</small> -->
               <div class="btn-group">
                 <template v-if="canModifyTopic(topic)">
                   <button

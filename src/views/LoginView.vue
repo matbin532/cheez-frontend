@@ -7,6 +7,10 @@ import { authService } from '@/services/auth'
 const router = useRouter()
 const authStore = useAuthStore()
 
+if (authStore.isAuthenticated) {
+  router.push('/')
+}
+
 const credentials = ref({
   username: '',
   password: '',

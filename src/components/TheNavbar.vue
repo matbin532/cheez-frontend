@@ -15,6 +15,20 @@ const logout = () => {
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
     <div class="container">
       <RouterLink class="navbar-brand" to="/">Cheezburger</RouterLink>
+      <RouterLink class="nav-link" to="/topics">Topics</RouterLink>
+      <!-- spacer-->
+      <div class="flex-grow-1"></div>
+
+      <template v-if="authStore.user?.isAdmin">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+            Admin
+          </a>
+          <ul class="dropdown-menu">
+            <li><RouterLink class="dropdown-item" to="/admin/users">User list</RouterLink></li>
+          </ul>
+        </div>
+      </template>
 
       <div class="navbar-nav ms-auto">
         <template v-if="authStore.isAuthenticated">
@@ -37,13 +51,13 @@ const logout = () => {
             <ul class="dropdown-menu dropdown-menu-end">
               <li><RouterLink class="dropdown-item" to="/profile">Profile</RouterLink></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#" @click.prevent="logout">Logout</a></li>
+              <li><a class="dropdown-item" href="#" @click.prevent="logout">Sign out</a></li>
             </ul>
           </div>
         </template>
         <template v-else>
-          <RouterLink class="nav-link" to="/login">Login</RouterLink>
-          <RouterLink class="nav-link" to="/register">Register</RouterLink>
+          <RouterLink class="nav-link" to="/login">Sign in</RouterLink>
+          <RouterLink class="nav-link" to="/register">Sign up</RouterLink>
         </template>
       </div>
     </div>
