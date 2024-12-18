@@ -106,7 +106,6 @@ onMounted(fetchPosts)
   <div class="container mt-4 pt-4">
     <div v-if="thread" class="mb-4">
       <h2>{{ thread.title }}</h2>
-      <p class="text-muted">{{ thread.content }}</p>
     </div>
 
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -159,7 +158,7 @@ onMounted(fetchPosts)
                 height="48"
                 :alt="creatorInfo[post.creatorID]?.username"
               />
-              <div class="fw-bold text-break">{{ creatorInfo[post.creatorID]?.username }}</div>
+              <div class="fw-bold text-wrap">{{ creatorInfo[post.creatorID]?.username }}</div>
             </div>
 
             <div class="flex-grow-1">
@@ -171,7 +170,7 @@ onMounted(fetchPosts)
                 <div
                   class="btn-group"
                   v-if="
-                    authStore.user?.userID === post.creatorID || authStore.user?.isAdmin === true
+                    authStore.user?.userID === post.creatorId || authStore.user?.isAdmin === true
                   "
                 >
                   <button
@@ -240,6 +239,31 @@ onMounted(fetchPosts)
 .post-card {
   animation: fadeInUp 0.5s ease forwards;
   opacity: 0;
+  width: 100%;
+  min-width: 900px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .post-card {
+    max-width: 100%;
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 900px) {
+  .post-card {
+    max-width: 100%;
+    min-width: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .post-card {
+    max-width: 100%;
+    min-width: 100%;
+  }
 }
 
 @keyframes fadeInUp {
