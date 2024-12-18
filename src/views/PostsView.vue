@@ -43,6 +43,7 @@ const fetchPosts = async () => {
   } catch (error) {
     console.error('Error:', error)
     error.value = 'Failed to load thread and posts'
+    router.push('/error')
   } finally {
     loading.value = false
   }
@@ -68,6 +69,7 @@ const createPost = async () => {
     currentPage.value = Math.ceil(posts.value.length / postsPerPage)
   } catch (error) {
     console.error('Error creating post:', error)
+    router.push('/error')
   } finally {
     saving.value = false
   }
@@ -92,6 +94,7 @@ const deletePost = async (postId) => {
       posts.value = posts.value.filter((post) => post.postID !== postId)
     } catch (error) {
       console.error('Error deleting post:', error)
+      router.push('/error')
     }
   }
 }
@@ -162,7 +165,7 @@ onMounted(fetchPosts)
             <div class="user-info text-center me-4" style="min-width: 120px">
               <img
                 :src="creatorInfo[post.creatorID]?.pfP_URL || 'https://via.placeholder.com/48'"
-                class="rounded-circle mb-2"
+                class="img-thumbnail mb-2"
                 width="48"
                 height="48"
                 :alt="creatorInfo[post.creatorID]?.username"

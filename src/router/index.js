@@ -56,6 +56,11 @@ const router = createRouter({
       component: () => import('../views/PostsView.vue'),
     },
     {
+      path: '/topics/:topicId/threads/:threadId/posts/:postId/edit',
+      name: 'edit-post',
+      component: () => import('../views/EditPost.vue'),
+    },
+    {
       path: '/admin/users',
       name: 'admin-users',
       component: () => import('../views/AdminView.vue'),
@@ -69,6 +74,11 @@ const router = createRouter({
       path: '/404',
       name: '404',
       component: () => import('../views/NotFound.vue'),
+    },
+    {
+      path: '/error',
+      name: 'error',
+      component: () => import('../views/ErrorView.vue'),
     }
   ],
 })

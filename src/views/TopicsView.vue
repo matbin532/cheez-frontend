@@ -16,6 +16,7 @@ const fetchTopics = async () => {
     topics.value.forEach((topic) => getCreatorName(topic))
   } catch (error) {
     console.error('Error fetching topics:', error)
+    router.push('/error')
   } finally {
     loading.value = false
   }

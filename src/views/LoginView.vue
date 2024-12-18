@@ -21,9 +21,10 @@ const login = async () => {
     const response = await authService.login(credentials.value)
     const refreshToken = response.data.refresh_token
     authStore.setAuth(refreshToken)
-    router.push('/forum')
+    router.push('/')
   } catch (error) {
     error.value = 'Invalid credentials'
+    router.push('/error')
   }
 }
 </script>

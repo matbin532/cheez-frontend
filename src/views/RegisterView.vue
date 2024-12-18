@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import { forumService } from '@/services/api'
+import { authService } from '@/services/auth'
 import { useRouter } from 'vue-router'
 
 if (useAuthStore().isAuthenticated) {
@@ -16,10 +16,11 @@ const credentials = ref({
 
 const register = async () => {
   try {
-    await forumService.register(credentials.value)
+    await authService.register(credentials.value)
     useRouter().push('/login')
   } catch (error) {
-    error.value = 'Failed to register'
+    console.error(error)
+    useRouter().push('/error')
   }
 }
 </script>

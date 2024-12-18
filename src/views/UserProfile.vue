@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import { forumService } from '@/services/api'
 import { authService } from '@/services/auth'
+import router from '@/router';
 
 const authStore = useAuthStore()
 const loading = ref(true)
@@ -39,11 +40,12 @@ const updateProfile = async () => {
   success.value = null
 
   try {
-    await forumService.updateUser(authStore.user.id, profile.value)
+    await forumService.updateUser(authStore.user.userID, profile.value)
     success.value = 'Profile updated successfully'
     authStore.user = { ...authStore.user, ...profile.value }
   } catch (error) {
     error.value = 'Failed to update profile'
+    router.push('/error')
   } finally {
     saving.value = false
   }
@@ -68,6 +70,7 @@ const updatePassword = async () => {
     newPassword.value = { current: '', new: '', confirm: '' }
   } catch (error) {
     error.value = 'Failed to update password'
+    router.push('/error')
   } finally {
     saving.value = false
   }

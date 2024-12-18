@@ -16,6 +16,7 @@ const fetchTopics = async () => {
     topics.value.forEach((topic) => getCreatorName(topic))
   } catch (error) {
     console.error('Error fetching topics:', error)
+    router.push('/error')
   } finally {
     loading.value = false
   }
@@ -28,6 +29,7 @@ const deleteTopic = async (topicId) => {
       topics.value = topics.value.filter((topic) => topic.topicID !== topicId)
     } catch (error) {
       console.error('Error deleting topic:', error)
+      router.push('/error')
     }
   }
 }

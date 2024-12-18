@@ -15,16 +15,16 @@ if (!store.isAuthenticated) {
   router.push('/login')
 }
 
-const thread = ref({
-  title: '',
+const post = ref({
+  content: '',
 })
 
-const fetchThread = async () => {
+const fetchPost = async () => {
   try {
-    const response = await forumService.getThread(route.params.topicId, route.params.threadId)
-    thread.value = response.data
+    const response = await forumService.getPost(route.params.topicId, route.params.threadId, route.params.postId)
+    post.value = response.data
   } catch (err) {
-    error.value = 'Failed to load thread'
+    error.value = 'Failed to load post'
     console.error(err)
     router.push('/error')
   } finally {
@@ -32,15 +32,15 @@ const fetchThread = async () => {
   }
 }
 
-const updateThread = async () => {
+const updatePost = async () => {
   saving.value = true
   try {
-    await forumService.updateThread(route.params.topicId, route.params.threadId, {
-      title: thread.value.title,
+    await forumService.updatePost(route.params.topicId, route.params.threadId, route.params.postId, {
+      content: post.value.content,
     })
-    router.push(`/topics/${route.params.topicId}/threads`)
+    router.push(`/topics/${route.params.topicId}/threads/${route.params.threadId}/posts`)
   } catch (err) {
-    error.value = 'Failed to update thread'
+    error.value = 'Failed to update post'
     console.error(err)
     router.push('/error')
   } finally {
@@ -48,12 +48,12 @@ const updateThread = async () => {
   }
 }
 
-onMounted(fetchThread)
+onMounted(fetchPost)
 </script>
 
 <template>
   <div class="container mt-4 pt-4">
-    <h2>Edit Thread</h2>
+    <h2>Edit Post</h2>
 
     <div v-if="error" class="alert alert-danger" role="alert">
       {{ error }}
@@ -65,10 +65,10 @@ onMounted(fetchThread)
       </div>
     </div>
 
-    <form v-else @submit.prevent="updateThread">
+    <form v-else @submit.prevent="updatePost">
       <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <input v-model="thread.title" type="text" class="form-control" id="title" required />
+        <label for="content" class="form-label">Content</label>
+        <input v-model="post.content" type="text" class="form-control" id="content" required />
       </div>
 
       <button type="submit" class="btn btn-primary" :disabled="saving">Save</button>

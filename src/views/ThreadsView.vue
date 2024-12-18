@@ -24,6 +24,7 @@ const fetchThreads = async () => {
   } catch (error) {
     console.error('Error fetching threads:', error)
     error.value = 'Failed to load threads'
+    router.push('/error')
   } finally {
     loading.value = false
   }
