@@ -35,7 +35,7 @@ const deleteTopic = async (topicId) => {
 
 const canModifyTopic = (topic) => {
   return (
-    authStore.isAuthenticated && (authStore.user?.isAdmin || topic.creatorId === authStore.user?.id)
+    authStore.isAuthenticated && (authStore.user?.isAdmin || authStore.user?.userID === topic.creatorId)
   )
 }
 const getCreatorName = async (topic) => {
